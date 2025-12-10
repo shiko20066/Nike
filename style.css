@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;900&display=swap');
+
+:root {
+    /* اللون الافتراضي (الأزرق) */
+    --theme: #0d6efd; 
+    --bg: #1e1e1e;
+    --card-bg: #2b2b2b;
+    --text: #fff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+body {
+    background: var(--bg);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* الكارت الأساسي */
+.card {
+    background: var(--card-bg);
+    width: 350px;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    position: relative;
+    transition: 0.5s; /* نعومة الحركة */
+}
+
+/* تأثير جانبي: ظل الكارت بياخد لون الجزمة */
+.card:hover {
+    box-shadow: 0 10px 20px var(--theme); /* لاحظ استخدام المتغير */
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.logo { color: var(--theme); font-size: 1.5rem; transition: color 0.4s; }
+
+/* منطقة العرض */
+.card-body {
+    position: relative;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* النص الخلفي العملاق */
+.bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03); /* شفاف جداً */
+    z-index: 1; /* ورا الجزمة */
+    letter-spacing: -5px;
+    user-select: none;
+}
+
+/* الجزمة نفسها */
+.shoe-img {
+    width: 120%; /* تخرج بره حدود الكارت شوية لشكل جمالي */
+    z-index: 2; /* فوق النص */
+    transform: rotate(-25deg);
+    filter: drop-shadow(0 15px 20px rgba(0,0,0,0.4)); /* ظل واقعي للجزمة مش للمربع */
+    transition: 0.5s ease;
+}
+
+/* أنيميشن الطيران عند الهوفر */
+.card:hover .shoe-img {
+    transform: rotate(-25deg) translateY(-20px) scale(1.05);
+}
+
+.card-footer h3 { color: var(--text); margin-bottom: 5px; }
+.card-footer p { color: #888; font-size: 0.8rem; margin-bottom: 20px; }
+
+/* دوائر الألوان */
+.colors { display: flex; gap: 15px; margin-bottom: 25px; }
+.colors span {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--bg); /* مجرد fallback */
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: 0.3s;
+}
+
+/* بنستخدم ال data-attribute عشان نلون الدوائر */
+.colors span[data-color="#0d6efd"] { background: #0d6efd; }
+.colors span[data-color="#FF4500"] { background: #FF4500; }
+.colors span[data-color="#198754"] { background: #198754; }
+.colors span[data-color="#ffc107"] { background: #ffc107; }
+
+.colors span.active {
+    border-color: #fff;
+    transform: scale(1.3);
+}
+
+/* زر الشراء */
+.btn-buy {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: var(--theme); /* الزر بياخد لون الجزمة */
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.4s;
+    font-size: 1rem;
+}
+.btn-buy:hover { opacity: 0.9; letter-spacing: 1px; }
