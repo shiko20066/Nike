@@ -28,3 +28,16 @@ colorBtns.forEach(btn => {
         }, 300); // استنى 300 مللي ثانية (نفس مدة الـ transition في الـ CSS لو ضفناها)
     });
 });
+const preloadImages = [
+    "images/bluee.webp",
+    "images/black.webp",
+    "images/orange.webp",
+    "images/green.webp",
+    "images/yello.webp"
+];
+
+// دالة بتلف عليهم وتحملهم في الخلفية
+preloadImages.forEach((src) => {
+    const img = new Image();
+    img.src = src;
+});
